@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="ChatGPT Image 28_05_2026, 21_39_23_2.png">
+    <title>Magnata Burguer - Delivery Premium</title>
+    
+    <!-- Tailwind CSS para estilização moderna e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fontes premium e ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magnata: {
+                            gold: '#D4AF37', // Ouro Imperial
+                            goldLight: '#F3E5AB',
+                            darkBg: '#0B0B0D', // Fundo quase preto sofisticado
+                            cardBg: '#131316', // Fundo dos cards
+                            accent: '#FF4C00', // Vermelho brasa para botões
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['Cinzel', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0B0B0D;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Efeito de brilho dourado premium */
+        .gold-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+        
+        .gold-glow-hover:hover {
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+
+        /* Animação suave de flutuação para a logo */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .float-animation {
+            animation: float 4s infinite ease-in-out;
+        }
+
+        /* Animação para brilhos pulsantes de fundo */
+        .glow-pulse {
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        /* Barra de rolagem customizada dourada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0B0D;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F3E5AB;
+        }
+
+        /* Shimmer effect para elementos especiais */
+        .logo-shine {
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-shine::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -60%;
+            width: 30%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.13);
+            transform: rotate(30deg);
+            transition: none;
+        }
+        .logo-shine:hover::after {
+            left: 120%;
+            transition: all 1.2s ease-in-out;
+        }
+        
+        /* Ocultar barra de rolagem horizontal mantendo scroll funcional */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="text-gray-100 min-h-screen">
+
+    <div id="custom-notification" class="fixed top-24 right-4 z-50 transform translate-x-full transition-transform duration-300 ease-out max-w-sm w-full bg-zinc-950 border border-magnata-gold/30 rounded-xl p-4 shadow-[0_10px_30px_rgba(0,0,0,0.5)] flex items-start gap-3 pointer-events-none">
+        <div id="notification-icon" class="w-8 h-8 rounded-full bg-magnata-gold/10 flex items-center justify-center text-magnata-gold flex-shrink-0">
+            <i class="fa-solid fa-bell"></i>
+        </div>
+        <div class="flex-1">
+            <h5 id="notification-title" class="font-serif text-sm font-bold text-white">Mensagem</h5>
+            <p id="notification-desc" class="text-xs text-gray-400 mt-0.5">Descrição do aviso.</p>
+        </div>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-[#0B0B0D]/95 backdrop-blur-md border-b border-white/5 py-3 px-4 md:px-8">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <!-- Logo & Marca com a logo real enviada -->
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-magnata-gold overflow-hidden bg-black flex items-center justify-center gold-glow logo-shine">
+                    <img src="logo.png" alt="Logo Magnata Burguer" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="font-serif text-xl md:text-2xl font-bold tracking-wide text-white flex items-center gap-2">
+                        Magnata <span class="text-magnata-gold font-sans font-extrabold text-xs tracking-widest bg-magnata-gold/10 px-2 py-0.5 rounded border border-magnata-gold/20">BURGUER</span>
+                    </h1>
+                    <p class="text-[10px] text-gray-400 font-medium tracking-widest uppercase flex items-center gap-1">
+                        <i class="fa-solid fa-location-dot text-magnata-gold"></i> Oriente - SP
+                    </p>
+                </div>
+            </div>
+
+            <!-- Funcionamento Dinâmico & Botão do Carrinho -->
+            <div class="flex items-center gap-4">
+                <div id="status-loja-header" class="hidden sm:flex items-center gap-2 bg-zinc-900 px-3 py-1.5 rounded-full border border-zinc-800">
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-500 animate-pulse"></span>
+                    <span class="text-xs font-bold text-gray-300">Aberto Agora</span>
+                </div>
+
+                <button onclick="abrirCarrinho()" class="relative bg-magnata-gold hover:bg-magnata-goldLight text-black font-extrabold px-4 py-2.5 rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg">
+                    <i class="fa-solid fa-basket-shopping text-sm"></i>
+                    <span class="hidden md:inline text-xs uppercase tracking-wider">Meu Pedido</span>
+                    <span id="carrinho-contador" class="bg-black text-white text-[10px] px-2 py-0.5 rounded-full font-bold">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <section class="relative py-12 md:py-20 px-4 border-b border-white/5 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-magnata-gold/5 rounded-full blur-3xl glow-pulse pointer-events-none"></div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <!-- Textos e Vantagens à esquerda -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left z-10">
+                <div class="inline-flex items-center gap-2 bg-magnata-gold/10 text-magnata-gold px-4 py-1.5 rounded-full border border-magnata-gold/30 text-xs font-bold uppercase tracking-widest animate-bounce">
+                    <i class="fa-solid fa-crown"></i> O sabor que domina!
+                </div>
+                
+                <h2 class="font-serif text-4xl md:text-6xl font-black text-white leading-tight">
+                    Sabor Imperial, <br class="hidden md:block">
+                    Preço de <span class="text-magnata-gold relative">Cozinha Real
+                        <span class="absolute bottom-1 left-0 w-full h-1 bg-magnata-gold/40 rounded"></span>
+                    </span>
+                </h2>
+                
+                <p class="text-gray-400 text-sm md:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Ingredientes rigorosamente selecionados, carnes suculentas grelhadas no ponto perfeito e molhos exclusivos que fazem de cada mordida um evento real na sua boca. Peça agora em Oriente-SP!
+                </p>
+
+                <div class="grid grid-cols-3 gap-3 max-w-md mx-auto lg:mx-0 pt-4 text-center">
+                    <div class="bg-zinc-900/60 p-3 rounded-xl border border-zinc-800">
+                        <i class="fa-solid fa-bolt text-magnata-gold text-xl mb-1"></i>
+                        <h4 class="text-xs font-bold text-white block">Super Rápido</h4>
+                        <span class="text-[10px] text-gray-400">Delivery em Oriente</span>
+                    </div>
+                    <div class="bg-zinc-900/60 p-3 rounded-xl border border-zinc-800">
+                        <i class="fa-solid fa-handshake-angle text-magnata-gold text-xl mb-1"></i>
+                        <h4 class="text-xs font-bold text-white block">Taxa Entrega</h4>
+                        <span class="text-[10px] text-magnata-gold font-bold">SOB CONSULTA</span>
+                    </div>
+                    <div class="bg-zinc-900/60 p-3 rounded-xl border border-zinc-800">
+                        <i class="fa-solid fa-award text-magnata-gold text-xl mb-1"></i>
+                        <h4 class="text-xs font-bold text-white block">Fidelidade</h4>
+                        <span class="text-[10px] text-gray-400">Em Breve</span>
+                    </div>
+                </div>
+
+                <div class="pt-2">
+                    <a href="#cardapio" class="inline-flex items-center gap-3 bg-gradient-to-r from-magnata-gold to-yellow-500 text-black font-extrabold px-8 py-4 rounded-xl hover:shadow-[0_0_30px_rgba(212,175,55,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                        <i class="fa-solid fa-utensils"></i> VER CARDÁPIO COMPLETO
+                    </a>
+                </div>
+            </div>
+
+            <!-- Apresentação da logo real à direita com efeito flutuante -->
+            <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
+                <div class="relative w-72 h-72 md:w-96 md:h-96 flex items-center justify-center float-animation select-none">
+                    <div class="absolute inset-0 bg-magnata-gold/5 rounded-full filter blur-2xl glow-pulse"></div>
+                    <img src="logo.png" alt="Magnata Burguer Logo Premium" class="w-full h-full object-contain filter drop-shadow-[0_15px_30px_rgba(212,175,55,0.3)]">
+                </div>
+                <div class="w-48 h-4 bg-magnata-gold/10 rounded-full blur-xl mt-4 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-8 px-4 bg-zinc-950/80 border-b border-white/5 relative">
+        <div class="max-w-4xl mx-auto relative">
+            
+            <!-- Cartão Fidelidade borrado no fundo -->
+            <div class="bg-gradient-to-r from-zinc-900 to-zinc-950 p-6 md:p-8 rounded-2xl border border-magnata-gold/10 relative overflow-hidden blur-[4px] opacity-40 pointer-events-none select-none">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-magnata-gold/5 rounded-full blur-2xl pointer-events-none"></div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="space-y-2 text-center md:text-left">
+                        <span class="bg-magnata-gold/20 text-magnata-gold border border-magnata-gold/40 text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">Clube Magnata</span>
+                        <h3 class="font-serif text-2xl font-bold text-white">Cartão Fidelidade Digital</h3>
+                        <p class="text-xs text-gray-400 max-w-md">Complete seu cartão e ganhe 1 Hambúrguer Clássico inteiramente GRÁTIS no seu 6º pedido! Cada pedido enviado acumula 1 carimbo.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-2">
+                        <div class="flex gap-2" id="cartao-fidelidade-slots">
+                            <!-- Inserido dinamicamente via JS -->
+                        </div>
+                        <p id="fidelidade-status-texto" class="text-xs font-bold text-magnata-gold uppercase tracking-wider mt-1">Carregando fidelidade...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cortina de Mistério/Surpresa (Em Breve) -->
+            <div class="absolute inset-0 bg-black/85 backdrop-blur-[4px] rounded-2xl border border-magnata-gold/30 flex flex-col items-center justify-center text-center p-6 z-20 gold-glow">
+                <div class="w-14 h-14 rounded-full bg-magnata-gold/10 border border-magnata-gold/30 flex items-center justify-center text-magnata-gold mb-3 animate-pulse shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    <i class="fa-solid fa-gift text-2xl"></i>
+                </div>
+                
+                <span class="bg-magnata-gold/10 text-magnata-gold border border-magnata-gold/20 font-sans font-black text-[10px] tracking-widest px-3 py-1 rounded-full uppercase mb-2">
+                    Clube Magnata
+                </span>
+                
+                <h3 class="font-serif text-xl md:text-2xl font-bold text-white tracking-wide">Uma Surpresa Imperial Está Sendo Preparada!</h3>
+                <p class="text-xs text-gray-400 max-w-md mt-1 mb-4 leading-relaxed">
+                    Estamos criando um sistema maravilhoso e cheio de recompensas majestosas para coroar nossos clientes mais assíduos. Aguarde!
+                </p>
+                
+                <div class="inline-flex items-center gap-2 text-xs font-black text-black bg-gradient-to-r from-magnata-gold to-yellow-500 px-5 py-2 rounded-xl uppercase tracking-widest shadow-lg">
+                    <i class="fa-solid fa-clock-rotate-left animate-spin text-sm"></i> Em Breve
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main id="cardapio" class="py-16 px-4 max-w-6xl mx-auto">
+        <div class="text-center space-y-3 mb-12">
+            <h3 class="font-serif text-3xl md:text-5xl font-extrabold text-white">O Cardápio Real</h3>
+            <p class="text-sm text-gray-400 max-w-lg mx-auto">Artesanais montados na hora com ingredientes frescos e sabor incomparável.</p>
+            <div class="w-16 h-1 bg-magnata-gold mx-auto rounded mt-4"></div>
+        </div>
+
+        <!-- Filtros de Categorias baseados no menu oficial -->
+        <div class="flex justify-center gap-2 overflow-x-auto pb-4 mb-10 no-scrollbar">
+            <button onclick="filtrarCardapio('todos')" class="categoria-btn active bg-magnata-gold text-black font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                👑 Todos
+            </button>
+            <button onclick="filtrarCardapio('lanches')" class="categoria-btn bg-zinc-900 hover:bg-zinc-800 text-gray-300 hover:text-white font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                🍔 Lanches
+            </button>
+            <button onclick="filtrarCardapio('porcoes')" class="categoria-btn bg-zinc-900 hover:bg-zinc-800 text-gray-300 hover:text-white font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                🍟 Porções
+            </button>
+            <button onclick="filtrarCardapio('bebidas')" class="categoria-btn bg-zinc-900 hover:bg-zinc-800 text-gray-300 hover:text-white font-extrabold px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition-all duration-300">
+                🥤 Bebidas
+            </button>
+        </div>
+
+        <!-- Grid onde os itens do cardápio serão carregados -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="itens-cardapio-grid">
+            <!-- Inseridos dinamicamente por JavaScript -->
+        </div>
+    </main>
+
+    <div id="carrinho-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex justify-end transition-opacity duration-300 opacity-0 pointer-events-none">
+        <div class="bg-zinc-950 w-full max-w-md h-full flex flex-col shadow-2xl border-l border-white/5 transform translate-x-full transition-transform duration-300" id="carrinho-painel">
+            <!-- Header do Carrinho -->
+            <div class="p-6 border-b border-white/5 flex items-center justify-between bg-zinc-900/50">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-magnata-gold text-xl"></i>
+                    <h3 class="font-serif text-xl font-bold text-white">Meu Carrinho</h3>
+                </div>
+                <button onclick="fecharCarrinho()" class="text-gray-400 hover:text-white bg-zinc-800 w-8 h-8 rounded-full flex items-center justify-center">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Lista de Produtos Adicionados -->
+            <div class="flex-1 overflow-y-auto p-6 space-y-4" id="carrinho-itens-lista">
+                <!-- Preenchido via JS -->
+            </div>
+
+            <!-- Dados de Entrega / Identificação -->
+            <div class="p-6 border-t border-white/5 bg-zinc-900/30 space-y-4">
+                <h4 class="font-serif text-sm font-bold text-magnata-gold uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-truck-ramp-box"></i> Detalhes de Entrega (Oriente-SP)
+                </h4>
+                
+                <div class="space-y-3 text-xs">
+                    <div>
+                        <label class="block text-gray-400 mb-1">Seu Nome *</label>
+                        <input type="text" id="cliente-nome" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" placeholder="Ex: Roberto Silva">
+                    </div>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="col-span-8">
+                            <label class="block text-gray-400 mb-1">Rua / Logradouro *</label>
+                            <input type="text" id="cliente-rua" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" placeholder="Rua Bahia">
+                        </div>
+                        <div class="col-span-4">
+                            <label class="block text-gray-400 mb-1">Número *</label>
+                            <input type="text" id="cliente-numero" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" placeholder="42">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1">Bairro / Referência</label>
+                        <input type="text" id="cliente-bairro" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" placeholder="Ex: Centro / Próximo à praça">
+                    </div>
+                    <div>
+                        <label class="block text-gray-400 mb-1">Forma de Pagamento *</label>
+                        <select id="cliente-pagamento" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" onchange="toggleTroco()">
+                            <option value="Pix">Pix (Mais Rápido)</option>
+                            <option value="Cartão de Débito/Crédito">Cartão de Débito/Crédito (Levar maquininha)</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                        </select>
+                    </div>
+                    <div id="troco-wrapper" class="hidden">
+                        <label class="block text-gray-400 mb-1">Precisa de troco para quanto?</label>
+                        <input type="text" id="cliente-troco" class="w-full bg-zinc-900 border border-zinc-800 rounded-lg p-2.5 text-white focus:border-magnata-gold focus:outline-none" placeholder="Ex: Para R$ 100,00">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo e Envio via WhatsApp -->
+            <div class="p-6 border-t border-white/5 bg-zinc-900 space-y-4">
+                <div class="space-y-1.5">
+                    <div class="flex justify-between text-sm text-gray-400">
+                        <span>Subtotal:</span>
+                        <span id="resumo-subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="flex justify-between text-sm items-center">
+                        <span class="text-gray-400">Entrega (Oriente-SP e Região):</span>
+                        <span class="text-magnata-gold font-bold bg-magnata-gold/10 px-2 py-0.5 rounded text-xs animate-pulse">SOB CONSULTA</span>
+                    </div>
+                    <div class="flex justify-between text-base font-extrabold text-white border-t border-white/5 pt-2">
+                        <span>Total Parcial:</span>
+                        <span id="resumo-total" class="text-magnata-gold">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button onclick="finalizarPedido()" class="w-full bg-gradient-to-r from-magnata-gold to-yellow-500 hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] text-black font-extrabold py-4 rounded-xl flex items-center justify-center gap-3 transition-all duration-300">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> ENVIAR PEDIDO NO WHATSAPP
+                </button>
+                <p class="text-[10px] text-gray-400 text-center font-sans">Ao enviar, o pedido será formatado de forma impecável para o WhatsApp!</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-black/95 border-t border-white/5 pt-12 pb-6 px-4">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <!-- Informações da Hamburgueria -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 rounded-full border border-magnata-gold overflow-hidden bg-black flex items-center justify-center">
+                        <img src="logo.png" alt="Logo Magnata" class="w-full h-full object-cover">
+                    </div>
+                    <h4 class="font-serif text-lg font-bold text-white">Magnata Burguer</h4>
+                </div>
+                <p class="text-xs text-gray-400 leading-relaxed mb-4 font-sans">
+                    O legítimo burguer gourmet de Oriente. Qualidade real de ponta a ponta. Nossa missão é entregar a melhor experiência gastronômica diretamente na sua mesa.
+                </p>
+                <div class="flex gap-3 text-gray-400">
+                    <a href="https://www.instagram.com/magnata.burgue" target="_blank" class="hover:text-magnata-gold"><i class="fa-brands fa-instagram text-lg"></i></a>
+                </div>
+            </div>
+
+            <!-- Horários oficiais de funcionamento -->
+            <div>
+                <h4 class="font-serif text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-regular fa-clock text-magnata-gold"></i> Horários de Funcionamento
+                </h4>
+                <ul class="space-y-2 text-xs text-gray-400 font-sans">
+                    <li class="flex justify-between border-b border-white/5 pb-1">
+                        <span>Quarta a Quinta:</span>
+                        <span class="text-white font-medium">18:30 às 23:00</span>
+                    </li>
+                    <li class="flex justify-between border-b border-white/5 pb-1">
+                        <span>Sexta a Domingo:</span>
+                        <span class="text-white font-medium">18:30 às 23:30</span>
+                    </li>
+                    <li class="flex justify-between text-magnata-gold font-bold">
+                        <span>Segunda e Terça:</span>
+                        <span>Fechado</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Contato e Entrega local -->
+            <div>
+                <h4 class="font-serif text-base font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="fa-solid fa-map-location-dot text-magnata-gold"></i> Localização & Contato
+                </h4>
+                <ul class="space-y-3 text-xs text-gray-400 font-sans">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-location-dot text-magnata-gold mt-0.5"></i>
+                        <span>Entregas exclusivas para toda a cidade de <strong>Oriente - SP</strong> e região sob consulta.</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-magnata-gold"></i>
+                        <span>(14) 99999-9999 (Apenas WhatsApp)</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fa-solid fa-truck text-magnata-gold"></i>
+                        <span class="font-bold text-magnata-gold">Taxa de Entrega: Sob Consulta</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="max-w-6xl mx-auto border-t border-white/5 pt-6 text-center text-[10px] text-gray-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 Magnata Burguer Oriente. Todos os direitos reservados.</p>
+            <p>Desenvolvido por <a href="https://www.instagram.com/rdxprint.br/" target="_blank" class="hover:text-magnata-gold transition-colors">RDX Group/Print</a>.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==============================================================================================
+        // 📸 PAINEL DE CONFIGURAÇÃO DE IMAGENS (COLE OS LINKS DAS SUAS IMAGENS ENTRE OS COLCHETES)
+        // Dica: Substitua o texto completo com colchetes [COLE_O_LINK_...] pelo link real da sua imagem.
+        // Enquanto você não colar, o site usará um banner escuro e dourado automático com o nome do item!
+        // ==============================================================================================
+        const cardapioItens = [
+            // === CATEGORIA: LANCHES ===
+            {
+                id: 1,
+                categoria: 'lanches',
+                nome: 'X Salada',
+                descricao: 'Pão tradicional, hambúrguer artesanal 150g, queijo, alface, tomate e maionese da casa.',
+                acompanhamento: 'Batata frita',
+                preco: 23.90,
+                popular: true,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'x-salada.png'
+            },
+            {
+                id: 2,
+                categoria: 'lanches',
+                nome: 'X Salada Bacon',
+                descricao: 'Pão tradicional, hambúrguer artesanal 150g, queijo, bacon crocante, alface, tomate e molho especial da casa.',
+                acompanhamento: 'Batata frita',
+                preco: 25.90,
+                popular: true,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'x-salada bacon.png'
+            },
+            {
+                id: 3,
+                categoria: 'lanches',
+                nome: 'X Salada Egg',
+                descricao: 'Pão tradicional, hambúrguer artesanal 150g, queijo, ovo frito, alface, tomate e maionese verde.',
+                acompanhamento: 'Batata frita',
+                preco: 30.90,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'x-salada egg.png'
+            },
+            {
+                id: 4,
+                categoria: 'lanches',
+                nome: 'Magnata Especial',
+                descricao: 'Pão tradicional, hambúrguer artesanal 180g, queijo duplo, bacon crocante, ovo frito, cebola caramelizada, picles, alface, tomate e molho especial Magnata.',
+                acompanhamento: 'Batata frita',
+                preco: 39.90,
+                popular: true,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'magnata especial.png'
+            },
+
+            // === CATEGORIA: PORÇÕES ===
+            {
+                id: 5,
+                categoria: 'porcoes',
+                nome: 'Batata Frita',
+                descricao: 'Porção de batata frita bem crocante, dourada, sequinha e salgada no ponto.',
+                preco: 16.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'batata.png'
+            },
+            {
+                id: 6,
+                categoria: 'porcoes',
+                nome: 'Batata com Cheddar e Bacon',
+                descricao: 'Batata frita crocante coberta com cheddar cremoso e generosas tiras de bacon.',
+                preco: 24.00,
+                popular: true,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'batata com bacon.png'
+            },
+            {
+                id: 7,
+                categoria: 'porcoes',
+                nome: 'Onion Rings',
+                descricao: 'Anéis de cebola gigantes empanados, super crocantes e saborosos.',
+                preco: 18.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'onion .png'
+            },
+            {
+                id: 8,
+                categoria: 'porcoes',
+                nome: 'Nuggets',
+                descricao: 'Nuggets de frango dourados e crocantes por fora, macios por dentro.',
+                preco: 16.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'nugetts.png'
+            },
+
+            // === CATEGORIA: BEBIDAS ===
+            {
+                id: 9,
+                categoria: 'bebidas',
+                nome: 'Refrigerante Lata',
+                descricao: 'Opções de refrigerante de lata trincando de gelado (350ml).',
+                preco: 6.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: '350ml.png'
+            },
+            {
+                id: 10,
+                categoria: 'bebidas',
+                nome: 'Refrigerante 600ml',
+                descricao: 'Opções em garrafa 600ml de sua marca favorita gelada.',
+                preco: 9.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: '600ml.png'
+            },
+            {
+                id: 11,
+                categoria: 'bebidas',
+                nome: 'Água Mineral',
+                descricao: 'Com ou sem gás.',
+                preco: 4.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'agua.png'
+            },
+            {
+                id: 12,
+                categoria: 'bebidas',
+                nome: 'Suco Natural',
+                descricao: 'Suco natural feito na hora (Consulte os sabores disponíveis).',
+                preco: 10.00,
+                popular: false,
+                // 👇 Dê dois cliques em cima do texto com colchetes abaixo e cole seu link:
+                imagem: 'suco.png'
+            }
+        ];
+        // ==============================================================================================
+
+        let carrinho = [];
+        const WHATSAPP_NUMERO = '5514996140357'; 
+
+        function mostrarNotificacao(titulo, mensagem, tipo = 'normal') {
+            const container = document.getElementById('custom-notification');
+            const titEl = document.getElementById('notification-title');
+            const descEl = document.getElementById('notification-desc');
+            const iconContainer = document.getElementById('notification-icon');
+
+            titEl.innerText = titulo;
+            descEl.innerText = mensagem;
+
+            if (tipo === 'erro') {
+                iconContainer.className = "w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center text-red-500 flex-shrink-0";
+                iconContainer.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+                container.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+            } else if (tipo === 'sucesso') {
+                iconContainer.className = "w-8 h-8 rounded-full bg-green-500/10 flex items-center justify-center text-green-500 flex-shrink-0";
+                iconContainer.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                container.style.borderColor = 'rgba(34, 197, 94, 0.4)';
+            } else {
+                iconContainer.className = "w-8 h-8 rounded-full bg-magnata-gold/10 flex items-center justify-center text-magnata-gold flex-shrink-0";
+                iconContainer.innerHTML = '<i class="fa-solid fa-crown"></i>';
+                container.style.borderColor = 'rgba(212, 175, 55, 0.4)';
+            }
+
+            container.classList.remove('translate-x-full');
+            
+            setTimeout(() => {
+                container.classList.add('translate-x-full');
+            }, 4000);
+        }
+
+        const FIDELIDADE_LIMIT = 5; 
+        
+        function obterHistoricoFidelidade() {
+            let carimbos = localStorage.getItem('magnata_fidelidade');
+            return carimbos ? parseInt(carimbos) : 0;
+        }
+
+        function salvarFidelidade(quantidade) {
+            localStorage.setItem('magnata_fidelidade', quantity = quantidade.toString());
+            renderizarFidelidade();
+        }
+
+        function renderizarFidelidade() {
+            const carimbos = obterHistoricoFidelidade();
+            const slotsContainer = document.getElementById('cartao-fidelidade-slots');
+            const statusTexto = document.getElementById('fidelidade-status-texto');
+            
+            if (!slotsContainer || !statusTexto) return;
+            slotsContainer.innerHTML = '';
+            
+            for (let i = 1; i <= FIDELIDADE_LIMIT; i++) {
+                const slot = document.createElement('div');
+                slot.className = `w-10 h-10 md:w-12 md:h-12 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
+                    i <= carimbos 
+                        ? 'border-magnata-gold bg-magnata-gold text-black rotate-[360deg] shadow-[0_0_12px_rgba(212,175,55,0.6)]' 
+                        : 'border-zinc-800 bg-zinc-900 text-zinc-600'
+                }`;
+                
+                slot.innerHTML = i <= carimbos 
+                    ? '<i class="fa-solid fa-crown text-base md:text-lg text-black"></i>' 
+                    : `<span class="font-bold text-xs">${i}</span>`;
+                
+                slotsContainer.appendChild(slot);
+            }
+
+            if (carimbos >= FIDELIDADE_LIMIT) {
+                statusTexto.innerHTML = `<span class="text-green-400 animate-pulse"><i class="fa-solid fa-gift"></i> PARABÉNS! PRÓXIMO BURGUER É GRÁTIS!</span>`;
+            } else {
+                const restam = FIDELIDADE_LIMIT - carimbos;
+                statusTexto.textContent = `Faltam apenas ${restam} pedidos para ganhar 1 Burger grátis`;
+            }
+        }
+
+        function renderizarCardapio(categoriaFiltrada = 'todos') {
+            const grid = document.getElementById('itens-cardapio-grid');
+            grid.innerHTML = '';
+
+            const itensFiltrados = categoriaFiltrada === 'todos' 
+                ? cardapioItens 
+                : cardapioItens.filter(item => item.categoria === categoriaFiltrada);
+
+            itensFiltrados.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-[#131316] border border-zinc-800 hover:border-magnata-gold/40 rounded-2xl overflow-hidden transition-all duration-300 transform hover:-translate-y-1 flex flex-col group";
+                
+                const acompanhamentoBadge = item.acompanhamento ? `
+                    <span class="absolute bottom-3 left-3 bg-zinc-950/80 backdrop-blur-md border border-magnata-gold/20 text-magnata-gold text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-lg z-10 shadow-lg font-sans">
+                        🍟 + ${item.acompanhamento}
+                    </span>
+                ` : '';
+
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden bg-zinc-900">
+                        ${item.popular ? `
+                            <span class="absolute top-3 left-3 bg-magnata-gold text-black font-extrabold text-[9px] uppercase tracking-wider px-2.5 py-1 rounded-full z-10 shadow-lg font-sans">
+                                <i class="fa-solid fa-fire-flame-curved"></i> O Mais Pedido
+                            </span>
+                        ` : ''}
+                        ${acompanhamentoBadge}
+                        <img src="${item.imagem}" alt="${item.nome}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" onerror="this.onerror=null; this.src='https://placehold.co/600x400/131316/D4AF37?text=${encodeURIComponent(item.nome)}';">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <h4 class="font-serif text-lg font-bold text-white group-hover:text-magnata-gold transition-colors">${item.nome}</h4>
+                            <p class="text-xs text-gray-400 leading-relaxed line-clamp-3 font-sans">${item.descricao}</p>
+                        </div>
+                        <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between">
+                            <span class="text-magnata-gold font-bold text-lg font-sans">
+                                <span class="text-[10px] font-normal text-gray-400">R$</span> ${item.preco.toFixed(2).replace('.', ',')}
+                            </span>
+                            <button onclick="adicionarAoCarrinho(${item.id})" class="bg-zinc-800 hover:bg-magnata-gold text-white hover:text-black font-bold text-xs py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center gap-1.5 active:scale-95 font-sans">
+                                <i class="fa-solid fa-plus"></i> Adicionar
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filtrarCardapio(categoria, btnClicado) {
+            const botoes = document.querySelectorAll('.categoria-btn');
+            botoes.forEach(btn => {
+                btn.classList.remove('active', 'bg-magnata-gold', 'text-black');
+                btn.classList.add('bg-zinc-900', 'text-gray-300');
+            });
+
+            btnClicado.classList.add('active', 'bg-magnata-gold', 'text-black');
+            btnClicado.classList.remove('bg-zinc-900', 'text-gray-300');
+
+            renderizarCardapio(categoria);
+        }
+
+        function adicionarAoCarrinho(id) {
+            const item = cardapioItens.find(x => x.id === id);
+            const itemExistente = carrinho.find(x => x.id === id);
+
+            if (itemExistente) {
+                itemExistente.quantidade += 1;
+            } else {
+                carrinho.push({ ...item, quantidade: 1 });
+            }
+
+            atualizarCarrinho();
+            mostrarNotificacao("Adicionado!", `${item.nome} foi adicionado ao seu pedido.`, "sucesso");
+        }
+
+        function alterarQuantidade(id, delta) {
+            const item = carrinho.find(x => x.id === id);
+            if (!item) return;
+
+            item.quantidade += delta;
+            if (item.quantidade <= 0) {
+                carrinho = carrinho.filter(x => x.id !== id);
+            }
+
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const contador = document.getElementById('carrinho-contador');
+            const totalItens = carrinho.reduce((sum, item) => sum + item.quantidade, 0);
+            contador.textContent = totalItens;
+
+            const lista = document.getElementById('carrinho-itens-lista');
+            lista.innerHTML = '';
+
+            if (carrinho.length === 0) {
+                lista.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-48 text-center text-gray-500 space-y-3 font-sans">
+                        <i class="fa-solid fa-basket-shopping text-4xl"></i>
+                        <p class="text-xs">Seu carrinho está vazio.</p>
+                    </div>
+                `;
+            } else {
+                carrinho.forEach(item => {
+                    const el = document.createElement('div');
+                    el.className = "flex items-center gap-4 bg-zinc-900/50 p-3 rounded-xl border border-zinc-800/80 font-sans";
+                    el.innerHTML = `
+                        <div class="w-12 h-12 rounded-lg overflow-hidden bg-zinc-800 flex-shrink-0">
+                            <img src="${item.imagem}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100/131316/D4AF37?text=MB';">
+                        </div>
+                        <div class="flex-1">
+                            <h5 class="text-xs font-bold text-white line-clamp-1">${item.nome}</h5>
+                            <span class="text-xs text-magnata-gold font-bold">R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</span>
+                        </div>
+                        <div class="flex items-center gap-2 bg-black px-2 py-1 rounded-lg border border-zinc-800">
+                            <button onclick="alterarQuantidade(${item.id}, -1)" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-minus"></i></button>
+                            <span class="text-xs text-white font-bold w-4 text-center">${item.quantidade}</span>
+                            <button onclick="alterarQuantidade(${item.id}, 1)" class="text-gray-400 hover:text-white text-xs"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    `;
+                    lista.appendChild(el);
+                });
+            }
+
+            const subtotal = carrinho.reduce((sum, item) => sum + (item.preco * item.quantidade), 0);
+            document.getElementById('resumo-subtotal').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('resumo-total').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        function toggleTroco() {
+            const pagamento = document.getElementById('cliente-pagamento').value;
+            const trocoWrapper = document.getElementById('troco-wrapper');
+            if (pagamento === 'Dinheiro') {
+                trocoWrapper.classList.remove('hidden');
+            } else {
+                trocoWrapper.classList.add('hidden');
+            }
+        }
+
+        function abrirCarrinho() {
+            const modal = document.getElementById('carrinho-modal');
+            const painel = document.getElementById('carrinho-painel');
+            modal.classList.remove('pointer-events-none');
+            modal.classList.add('opacity-100');
+            painel.classList.remove('translate-x-full');
+        }
+
+        function fecharCarrinho() {
+            const modal = document.getElementById('carrinho-modal');
+            const painel = document.getElementById('carrinho-painel');
+            modal.classList.add('pointer-events-none');
+            modal.classList.remove('opacity-100');
+            painel.classList.add('translate-x-full');
+        }
+
+        function finalizarPedido() {
+            if (carrinho.length === 0) {
+                mostrarNotificacao("Carrinho Vazio", "Adicione pelo menos um item ao seu pedido antes de prosseguir.", "erro");
+                return;
+            }
+
+            const nome = document.getElementById('cliente-nome').value.trim();
+            const rua = document.getElementById('cliente-rua').value.trim();
+            const numero = document.getElementById('cliente-numero').value.trim();
+            const bairro = document.getElementById('cliente-bairro').value.trim();
+            const pagamento = document.getElementById('cliente-pagamento').value;
+            const troco = document.getElementById('cliente-troco').value.trim();
+
+            if (!nome || !rua || !numero) {
+                mostrarNotificacao("Dados Incompletos", "Por favor, preencha o Nome, a Rua e o Número da entrega.", "erro");
+                return;
+            }
+
+            // Símbolos de formatação e emojis removidos do texto de saída
+            let msg = `NOVO PEDIDO - MAGNATA BURGUER\n\n`;
+            msg += `Cliente: ${nome}\n`;
+            msg += `Endereço: ${rua}, numero ${numero}\n`;
+            if (bairro) msg += `Bairro/Referencia: ${bairro}\n`;
+            msg += `Pagamento: ${pagamento}\n`;
+            if (pagamento === 'Dinheiro' && troco) msg += `Troco para: ${troco}\n`;
+            msg += `\n------------------------------\n`;
+            msg += `PRODUTOS: \n`;
+
+            let subtotal = 0;
+            carrinho.forEach(item => {
+                msg += `- ${item.quantidade}x ${item.nome} ${item.acompanhamento ? `(+ ${item.acompanhamento})` : ''} (R$ ${item.preco.toFixed(2).replace('.', ',')})\n`;
+                subtotal += item.preco * item.quantidade;
+            });
+
+            msg += `\n------------------------------\n`;
+            msg += `Subtotal: R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+            msg += `Taxa de Entrega: A Combinar (Oriente-SP)\n\n`;
+            msg += `Pedido gerado atraves do site.`;
+
+            let carimbosAtuais = obterHistoricoFidelidade();
+            if (carimbosAtuais < 5) {
+                salvarFidelidade(carimbosAtuais + 1);
+            } else {
+                salvarFidelidade(0);
+            }
+
+            const url = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMERO}&text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+
+            carrinho = [];
+            atualizarCarrinho();
+            fecharCarrinho();
+            mostrarNotificacao("Pedido Concluído", "Seu pedido foi formatado e enviado ao WhatsApp!", "sucesso");
+        }
+
+        window.onload = function () {
+            renderizarCardapio('todos');
+            renderizarFidelidade();
+        }
+    </script>
+</body>
+</html>
